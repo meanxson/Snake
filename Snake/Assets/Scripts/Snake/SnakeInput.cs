@@ -9,8 +9,7 @@ public class SnakeInput : MonoBehaviour
       _camera = Camera.main;
    }
 
-
-   public Vector3 GetDirection(Transform head)
+   /*public Vector3 GetDirection(Transform head)
    {
       Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
       var rotation = transform.eulerAngles;
@@ -24,5 +23,5 @@ public class SnakeInput : MonoBehaviour
       }
 
       return rotation;
-   }
+   }*/
 }

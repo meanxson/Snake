@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BorderPoint : MonoBehaviour
 {
-    public Renderer Renderer { get; private set; }
+    public Renderer Renderer;
 
     private void Awake() 
         => Renderer = GetComponent<Renderer>();

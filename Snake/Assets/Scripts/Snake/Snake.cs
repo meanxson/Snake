@@ -13,6 +13,8 @@ public class Snake : MonoBehaviour
     private Renderer _renderer;
     private SnakeInput _input;
 
+    public Color Color { get; private set; }
+
     public List<Segment> Tails { get; private set; }
 
     private void Awake()
@@ -26,7 +28,7 @@ public class Snake : MonoBehaviour
     private void FixedUpdate()
     {
         Move(_head.transform.position + _head.transform.forward * (_speed * Time.fixedDeltaTime));
-        _head.transform.forward = _input.GetDirection(_head.transform);
+        //_head.transform.forward = _input.GetDirection(_head.transform);
     }
 
     private void Move(Vector3 nextPosition)

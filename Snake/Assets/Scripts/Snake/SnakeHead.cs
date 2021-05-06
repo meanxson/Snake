@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
@@ -27,6 +28,14 @@ public class SnakeHead : MonoBehaviour
         {
             snakeTail.Renderer.material.DOColor(color, duration);
             yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out Human human))
+        {
+            
         }
     }
 }

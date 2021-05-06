@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc44ad5e0870794a8fb799f947c8ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countOfTrail: 10
+  _countOfTrail: 3
   _trailSegment: {fileID: 2162119022102424870, guid: 9530642ca1b6a4e4f96eb96286b354de,
     type: 3}
   changeColorPoint: {fileID: -8757776669012866313, guid: 632cf3eaee53acd40a46a41ae17efd6d,
@@ -390,7 +390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858607749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.25, z: 7.799999}
+  m_LocalPosition: {x: 0, y: 2.25, z: -145.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1685285845}
@@ -750,7 +750,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685285839}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.21000004, z: 0}
+  m_LocalPosition: {x: 0.3, y: -0.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 858607752}
