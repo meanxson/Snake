@@ -28,7 +28,7 @@ public class Snake : MonoBehaviour
     private void FixedUpdate()
     {
         Move(_head.transform.position + _head.transform.forward * (_speed * Time.fixedDeltaTime));
-        //_head.transform.forward = _input.GetDirection(_head.transform);
+        _head.transform.forward = _input.GetDirectionToClick(transform.position);
     }
 
     private void Move(Vector3 nextPosition)

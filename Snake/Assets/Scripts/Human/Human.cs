@@ -9,7 +9,7 @@ public class Human : MonoBehaviour
    
    private void Awake() => _renderer = GetComponent<Renderer>();
 
-   public void InitColor(Color color)
+   public void SetColor(Color color)
    {
       _renderer.material.color = color;
    }

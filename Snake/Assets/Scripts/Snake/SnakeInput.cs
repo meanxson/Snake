@@ -1,27 +1,22 @@
+using System;
 using UnityEngine;
 
 public class SnakeInput : MonoBehaviour
 {
    private Camera _camera;
 
-   private void Start()
+   private void Awake() => _camera = Camera.main;
+
+   public Vector3 GetDirectionToClick(Vector3 headPosition)
    {
-      _camera = Camera.main;
+      var mousePosition = Input.mousePosition;
+      var direction = Vector3.forward;
+
+      mousePosition = _camera.ScreenToViewportPoint(mousePosition);
+      
+      if (Input.GetMouseButton(0))
+         direction.x = mousePosition.x - headPosition.x;
+      
+      return direction;
    }
-
-   /*public Vector3 GetDirection(Transform head)
-   {
-      Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-      var rotation = transform.eulerAngles;
-
-      RaycastHit hit = new RaycastHit();
-
-      if (Physics.Raycast(ray, out hit))
-      {
-         head.LookAt(hit.point);
-         rotation = new Vector3(0, transform.eulerAngles.y, 0);
-      }
-
-      return rotation;
-   }*/
 }

@@ -4,6 +4,8 @@ using Random = UnityEngine.Random;
 
 public class ColorsController : MonoBehaviour
 {
+    [SerializeField] private int _colorCount;
+    
     public readonly List<Color> Colors = new List<Color>();
 
     public Color CurrentColor { get; private set; }
@@ -13,11 +15,9 @@ public class ColorsController : MonoBehaviour
 
     private void InitColors()
     {
-        for (var i = 0; i < 6; i++)
-        {
+        for (var i = 0; i < _colorCount; i++)
             Colors.Add(new Color32((byte) Random.Range(0, 255), (byte) Random.Range(0, 255),
                 (byte) Random.Range(0, 255), 255));
-        }
     }
 
     public Color SetColor(int index)
