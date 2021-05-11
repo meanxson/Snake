@@ -6,6 +6,7 @@ using UnityEngine;
 public class HumanGenerator : MonoBehaviour
 {
     [SerializeField] private int _humanCount;
+    [SerializeField] private int _spawnRange;
     [SerializeField] private HumansGroup _humansGroup;
     [SerializeField] private Transform _spawnPoint;
 
@@ -16,8 +17,8 @@ public class HumanGenerator : MonoBehaviour
         _spawnPoint.localPosition = new Vector3(0, 0, trailStartPositionZ);
         for (var i = 0; i < _humanCount; i++)
         {
-            trailStartPositionZ += 10;
-            Instantiate(humansGroup, _spawnPoint.localPosition.normalized, Quaternion.identity, _spawnPoint);
+            trailStartPositionZ += _spawnRange;
+            Instantiate(humansGroup, _spawnPoint.position.normalized, Quaternion.identity, _spawnPoint);
             _spawnPoint.localPosition = new Vector3(0, 0, trailStartPositionZ);
         }
     }

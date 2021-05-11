@@ -21,7 +21,7 @@ public class TrailGenerator : MonoBehaviour
             _spawnPoint.position = new Vector3(0, 0, lenght);
             Instantiate(_trailSegment, _spawnPoint.localPosition, Quaternion.identity, transform);
             Instantiate(changeColorPoint, _spawnPoint.position, Quaternion.identity, transform);
-            _humanGenerator.Spawn(_humanGenerator.HumansGroup, 10);
+            _humanGenerator.Spawn(_humanGenerator.HumansGroup, 0);
             lenght += _trailSegment.Size * 10;
         }
     }

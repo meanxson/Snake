@@ -6,12 +6,14 @@ public class ColorsController : MonoBehaviour
 {
     [SerializeField] private int _colorCount;
     
-    public readonly List<Color> Colors = new List<Color>();
+    public readonly List<Color> Colors;
 
     public Color CurrentColor { get; private set; }
 
     private void Awake()
-        => InitColors();
+    {
+        InitColors();
+    }
 
     private void InitColors()
     {

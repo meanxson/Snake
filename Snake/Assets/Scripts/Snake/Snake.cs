@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Snake : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Snake : MonoBehaviour
     private SnakeInput _input;
 
     public Color Color { get; private set; }
-
+    
     public List<Segment> Tails { get; private set; }
 
     private void Awake()
@@ -24,10 +25,12 @@ public class Snake : MonoBehaviour
         _renderer = GetComponent<Renderer>();
         _input = GetComponent<SnakeInput>();
     }
-
+    
     private void FixedUpdate()
     {
-        Move(_head.transform.position + _head.transform.forward * (_speed * Time.fixedDeltaTime));
+        var headTransform = _head.transform;
+        
+        Move(headTransform.position + headTransform.forward * (_speed * Time.fixedDeltaTime));
         _head.transform.forward = _input.GetDirectionToClick(transform.position);
     }
 
@@ -46,5 +49,10 @@ public class Snake : MonoBehaviour
         }
 
         _head.Move(nextPosition);
+    }
+
+    public void Lose()
+    {
+        
     }
 }

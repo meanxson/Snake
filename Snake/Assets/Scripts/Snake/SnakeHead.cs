@@ -11,8 +11,6 @@ public class SnakeHead : MonoBehaviour
     private Renderer _renderer;
     private Snake Snake;
 
-    public Rigidbody Rigidbody => _rigidbody;
-
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -21,14 +19,6 @@ public class SnakeHead : MonoBehaviour
     }
 
     public void Move(Vector3 newPosition) => _rigidbody.MovePosition(newPosition);
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.TryGetComponent(out Human human))
-        {
-            
-        }
-    }
 
     public IEnumerator SwitchColor(Color color, float duration)
     {
