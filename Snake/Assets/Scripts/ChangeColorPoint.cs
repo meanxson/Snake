@@ -23,8 +23,6 @@ public class ChangeColorPoint : MonoBehaviour
     {
         index = Random.Range(0, _colorsController.Colors.Count);
         
-        if (index <= 0) return;
-        
         var color = _colorsController.Colors[index];
 
         foreach (var particle in _particles)
@@ -33,6 +31,7 @@ public class ChangeColorPoint : MonoBehaviour
             particleMain.startColor = new ParticleSystem.MinMaxGradient(color);
         }
         _borderPoint.Renderer.material.color = color;
+        _colorsController.SetColors.Add(color);
     }
     
     private void OnTriggerEnter(Collider other)

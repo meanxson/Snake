@@ -25,8 +25,6 @@ public class HumanGenerator : MonoBehaviour
         {
             trailStartPositionZ += _spawnRange;
             Instantiate(humansGroup, _spawnPoint.position.normalized, Quaternion.identity, _spawnPoint);
-            _humansGroup.InitHumansColor(_colors.Colors);
-            
             _spawnPoint.localPosition = new Vector3(0, 0, trailStartPositionZ);
         }
     }

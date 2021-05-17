@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,27 +8,40 @@ using Random = UnityEngine.Random;
 public class HumansGroup : MonoBehaviour
 {
     [SerializeField] private Humans[] _humans;
-    
-    public void InitHumansColor(List<Color32> currentColor)
+
+    private ColorsController _colors;
+
+    private void Awake() => _colors = FindObjectOfType<ColorsController>();
+
+    private void Start() => InitHumansColor(_colors.SetColors);
+
+    private void InitHumansColor(List<Color32> currentColor, int index = 0)
     {
         var colors = new Queue<Color32>();
-
-
+        
         colors.Enqueue(currentColor[0]);
-        colors.Enqueue(new Color32((byte) Random.Range(0, 255), (byte) Random.Range(0, 255),
-            (byte) Random.Range(0, 255), 255));
+        colors.Enqueue(currentColor[1]);
 
-        var index = Random.Range(0, _humans.Length);
-        var color = colors.Dequeue();
+        var humanRandomIndex = Random.Range(0, _humans.Length);
 
         foreach (var dummy in _humans)
         {
-            _humans[index].SetHumansColors(color);
+            _humans[humanRandomIndex].SetHumansColors(colors.Dequeue());
 
-            if (index == 0)
-                index++;
+            if (humanRandomIndex == 0)
+                humanRandomIndex++;
             else
-                index = 0;
+                humanRandomIndex = 0;
         }
     }
+
+    private List<Color32> ReversedColor(List<Color32> colors)
+    {
+        var tempColors = new List<Color32>();
+        
+        for (int i = colors.Count - 1; i >= 0; i--) tempColors.Add(colors[i]);
+
+        return tempColors;
+    }
+    
 }
