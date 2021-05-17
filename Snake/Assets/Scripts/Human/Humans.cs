@@ -2,23 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Humans : MonoBehaviour
 {
     private Human[] _humans;
-    private ColorsController _colors;
 
     private void Awake()
-    {
-        _humans = GetComponentsInChildren<Human>();
-        _colors = FindObjectOfType<ColorsController>();
-    }
+        => _humans = GetComponentsInChildren<Human>();
 
-    private void Start()
+    public void SetHumansColors(Color32 color)
     {
-        foreach (var human in _humans)
-        {
-            human.SetColor(_colors.CurrentColor);
-        }
+        foreach (var human in _humans) 
+            human.SetColor(color);
     }
 }

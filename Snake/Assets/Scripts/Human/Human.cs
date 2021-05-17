@@ -8,12 +8,15 @@ using UnityEngine.Events;
 public class Human : MonoBehaviour
 {
    private Renderer _renderer;
-   
+
    public Color Color { get; private set; }
 
-   private void Awake() => _renderer = GetComponent<Renderer>();
+   private void Awake()
+   {
+      _renderer = GetComponent<Renderer>();
+   }
 
-   public void SetColor(Color color)
+   public void SetColor(Color32 color)
    {
       Color = color;
       _renderer.material.color = color;

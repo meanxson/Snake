@@ -17,9 +17,7 @@ public class SnakeCollect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Human human) && human.Color == _snake.Color) 
+        if (other.TryGetComponent(out Human human)) 
            human.Collect();
-        else
-            _snake.Lose();
     }
 }

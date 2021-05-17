@@ -9,12 +9,10 @@ public class Snake : MonoBehaviour
     [SerializeField] private float _tailSpringiness;
     [SerializeField] private SnakeHead _head;
 
+    private SnakeInput _input;
     private TailGenerator _tailGenerator;
 
-    private Renderer _renderer;
-    private SnakeInput _input;
-
-    public Color Color { get; private set; }
+    public readonly Color32 StartColor = Color.green;
     
     public List<Segment> Tails { get; private set; }
 
@@ -22,7 +20,6 @@ public class Snake : MonoBehaviour
     {
         _tailGenerator = GetComponent<TailGenerator>();
         Tails = _tailGenerator.Generate(_tailSize);
-        _renderer = GetComponent<Renderer>();
         _input = GetComponent<SnakeInput>();
     }
     
@@ -53,6 +50,6 @@ public class Snake : MonoBehaviour
 
     public void Lose()
     {
-        
+        Debug.LogError("You Lose!");
     }
 }
