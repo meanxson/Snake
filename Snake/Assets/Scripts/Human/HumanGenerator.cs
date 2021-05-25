@@ -13,18 +13,16 @@ public class HumanGenerator : MonoBehaviour
     private ColorsController _colors;
 
     private void Awake() => _colors = GetComponent<ColorsController>();
-
-    public int HumanCount => _humanCount;
-    
     public HumansGroup HumansGroup => _humansGroup;
     
-    public void Spawn(HumansGroup humansGroup, int trailStartPositionZ)
+    public void Spawn(int trailStartPositionZ, int index = 0)
     {
         _spawnPoint.localPosition = new Vector3(0, 0, trailStartPositionZ);
         for (var i = 0; i < _humanCount; i++)
         {
             trailStartPositionZ += _spawnRange;
-            Instantiate(humansGroup, _spawnPoint.position.normalized, Quaternion.identity, _spawnPoint);
+            Instantiate(_humansGroup.gameObject, _spawnPoint.position.normalized, Quaternion.identity, _spawnPoint);
+
             _spawnPoint.localPosition = new Vector3(0, 0, trailStartPositionZ);
         }
     }

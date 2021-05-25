@@ -9,7 +9,7 @@ public class Human : MonoBehaviour
 {
    private Renderer _renderer;
 
-   public Color Color { get; private set; }
+   public Color32 Color { get; private set; }
 
    private void Awake()
    {

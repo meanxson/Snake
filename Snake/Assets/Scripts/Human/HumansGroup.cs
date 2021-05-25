@@ -13,25 +13,26 @@ public class HumansGroup : MonoBehaviour
 
     private void Awake() => _colors = FindObjectOfType<ColorsController>();
 
-    private void Start() => InitHumansColor(_colors.SetColors);
+    private void Start() => InitHumansColor(_colors.Colors);
 
-    private void InitHumansColor(List<Color32> currentColor, int index = 0)
+    public void InitHumansColor(List<Color32> currentColor, int index = 0)
     {
         var colors = new Queue<Color32>();
+        var secondColor = ReversedColor(currentColor);
         
-        colors.Enqueue(currentColor[0]);
-        colors.Enqueue(currentColor[1]);
+        colors.Enqueue(currentColor[index]);
+        colors.Enqueue(secondColor[index]);
 
-        var humanRandomIndex = Random.Range(0, _humans.Length);
+        var humanIndex = Random.Range(0, _humans.Length);
 
         foreach (var dummy in _humans)
         {
-            _humans[humanRandomIndex].SetHumansColors(colors.Dequeue());
+            _humans[humanIndex].SetHumansColors(colors.Dequeue());
 
-            if (humanRandomIndex == 0)
-                humanRandomIndex++;
+            if (humanIndex == 0)
+                humanIndex++;
             else
-                humanRandomIndex = 0;
+                humanIndex = 0;
         }
     }
 
@@ -39,7 +40,7 @@ public class HumansGroup : MonoBehaviour
     {
         var tempColors = new List<Color32>();
         
-        for (int i = colors.Count - 1; i >= 0; i--) tempColors.Add(colors[i]);
+        for (var i = colors.Count - 1; i >= 0; i--) tempColors.Add(colors[i]);
 
         return tempColors;
     }

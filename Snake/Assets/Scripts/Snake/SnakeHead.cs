@@ -11,7 +11,7 @@ public class SnakeHead : MonoBehaviour
     private Renderer _renderer;
     private Snake Snake;
 
-    public Color Color { get; private set; }
+    public Color32 Color { get; private set; }
 
     private void Awake()
     {
@@ -29,11 +29,11 @@ public class SnakeHead : MonoBehaviour
 
     public void Move(Vector3 newPosition) => _rigidbody.MovePosition(newPosition);
 
-    public IEnumerator SwitchColor(Color color, float duration)
+    public IEnumerator SwitchColor(Color32 color, float duration)
     {
-        _renderer.material.DOColor(color, duration);
         Color = color;
-        
+        _renderer.material.DOColor(color, duration);
+
         foreach (var snakeTail in Snake.Tails)
         {
             snakeTail.Renderer.material.DOColor(color, duration);
